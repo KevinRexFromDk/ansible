@@ -18,7 +18,8 @@ else
     echo -e "\e[33mSnap is not installed.\e[0m"
     # Prompt user to install snapd
     while true; do
-        read -p "Do you want to install snapd? (y/n): " yn
+        read -p "Do you want to install snapd? [Y/n]: " yn
+        yn=${yn:-Y}  # Default to 'Y' if nothing is entered
         case $yn in
             [Yy]* )
                 # Install snapd if the user agrees
@@ -43,12 +44,13 @@ else
     echo -e "\e[33mSemaphore is not installed.\e[0m"
     # Prompt user to install Semaphore
     while true; do
-        read -p "Do you want to install Semaphore? (y/n): " yn
+        read -p "Do you want to install Semaphore? [Y/n]: " yn
+        yn=${yn:-Y}  # Default to 'Y' if nothing is entered
         case $yn in
             [Yy]* )
                 # Install Semaphore if the user agrees
                 echo -e "\e[34mInstalling Semaphore...\e[0m"
-                sudo apt install semaphore -y || handle_error "Failed to install Semaphore"
+                sudo snap install semaphore -y || handle_error "Failed to install Semaphore"
                 echo -e "\e[32mSemaphore installed successfully!\e[0m"
                 break
                 ;;
@@ -68,7 +70,7 @@ fi
 
 # Ask the user for the Semaphore admin account (true/false)
 while true; do
-    read -p "Create a semaphore admin account? (true/false, default 'true'): " semAdmin
+    read -p "Create a semaphore admin account? [Y/n] (default 'true'): " semAdmin
     semAdmin=${semAdmin:-true}  # Default to 'true' if nothing is entered
     
     if [[ "$semAdmin" == "true" || "$semAdmin" == "false" ]]; then
@@ -80,18 +82,18 @@ while true; do
 done
 
 # Ask for the Semaphore user name (default to 'semaphore_user')
-read -p "Enter the Semaphore user's name (default 'semaphore'): " semName
+read -p "Enter the Semaphore user's name [Y/n] (default 'semaphore'): " semName
 semName=${semName:-semaphore}
 echo -e "\e[32mSemaphore User Name: $semName\e[0m"
 
 # Ask for the Semaphore login (default to 'semaphore_login')
-read -p "Enter the Semaphore user's login (default 'semaphore'): " semLogin
+read -p "Enter the Semaphore user's login [Y/n] (default 'semaphore'): " semLogin
 semLogin=${semLogin:-semaphore}
 echo -e "\e[32mSemaphore User Login: $semLogin\e[0m"
 
 # Ask for the Semaphore user's email (required)
 while true; do
-    read -p "Enter the Semaphore user's email (required): " semEmail
+    read -p "Enter the Semaphore user's email [Y/n] (required): " semEmail
     # Validate email format with regex
     if [[ "$semEmail" =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$ ]]; then
         echo -e "\e[32mSemaphore User Email: $semEmail\e[0m"
@@ -102,7 +104,7 @@ while true; do
 done
 
 # Ask for the Semaphore user's password (default to 'Password123')
-read -sp "Enter the Semaphore user's password (default 'Passw0rd'): " semPassword
+read -sp "Enter the Semaphore user's password [Y/n] (default 'Passw0rd'): " semPassword
 semPassword=${semPassword:-Passw0rd}
 echo -e "\e[32mSemaphore User Password: $semPassword\e[0m"
 
@@ -116,7 +118,8 @@ echo -e "Password: $semPassword"
 
 # Ask the user to confirm
 while true; do
-    read -p "Is this information correct? (y/n): " confirm
+    read -p "Is this information correct? [Y/n]: " confirm
+    confirm=${confirm:-Y}  # Default to 'Y' if nothing is entered
     case $confirm in
         [Yy]* ) 
             break
