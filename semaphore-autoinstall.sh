@@ -52,7 +52,7 @@ echo -e "Admin Account: $semAdmin"
 echo -e "User Name: $semName"
 echo -e "Login: $semLogin"
 echo -e "Email: $semEmail"
-echo -e "Password: [hidden]"
+echo -e "Password: $semPassword"
 
 # Ask the user to confirm
 while true; do
