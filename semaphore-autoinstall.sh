@@ -28,7 +28,7 @@ else
                 break
                 ;;
             [Nn]* )
-                echo -e "\e[31mSnap will not be installed.\e[0m"
+                echo -e "\e[31mSnap will not be installed. Exiting...\e[0m"
                 exit 1
                 ;;
             * ) echo "Please answer yes or no.";;
@@ -55,7 +55,7 @@ else
                 break
                 ;;
             [Nn]* )
-                echo -e "\e[31mSemaphore will not be installed.\e[0m"
+                echo -e "\e[31mSemaphore will not be installed. Exiting...\e[0m"
                 exit 1
                 ;;
             * ) echo "Please answer yes or no.";;
