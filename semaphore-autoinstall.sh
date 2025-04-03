@@ -50,7 +50,7 @@ else
             [Yy]* )
                 # Install Semaphore if the user agrees
                 echo -e "\e[34mInstalling Semaphore...\e[0m"
-                sudo snap install semaphore -y || handle_error "Failed to install Semaphore"
+                sudo snap install semaphore || handle_error "Failed to install Semaphore"
                 echo -e "\e[32mSemaphore installed successfully!\e[0m"
                 break
                 ;;
