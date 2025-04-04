@@ -44,15 +44,14 @@ sudo apt-get update -y && sudo apt-get upgrade -y || handle_error "System update
 # Check and install mariadb
 check_or_install_app "mariadb" "mariadb" "sudo apt install mariadb-server"
 sudo mariadb-secure-installation || handle_error "Failed to execute maridb-secure-installation"
-sudo mariadb
 
 # Prompt for DB name with default
-read -p "Enter database name (default 'myapp_db'): " DB_NAME
+read -p "Enter database name (default 'semaphore_db'): " DB_NAME
 DB_NAME=${DB_NAME:-semaphore_db}
 echo -e "\e[32mDatabase Name: $DB_NAME\e[0m"
 
 # Prompt for DB user with default
-read -p "Enter database user (default 'myapp_user'): " DB_USER
+read -p "Enter database user (default 'semaphore'): " DB_USER
 DB_USER=${DB_USER:-semaphore}
 echo -e "\e[32mDatabase User: $DB_USER\e[0m"
 
