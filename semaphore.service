@@ -1,0 +1,17 @@
+[Unit]
+Description=Ansible Semaphore
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/usr/bin/semaphore
+ConditionPathExists=/etc/semaphore/config.json
+
+[Service]
+ExecStart=/usr/bin/semaphore server --config /etc/semaphore/config.json
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10s
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
