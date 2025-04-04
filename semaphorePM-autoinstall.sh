@@ -51,8 +51,8 @@ DB_NAME=${DB_NAME:-semaphore_db}
 echo -e "\e[32mDatabase Name: $DB_NAME\e[0m"
 
 # Prompt for DB user with default
-read -p "Enter database user (default 'semaphore'): " DB_USER
-DB_USER=${DB_USER:-semaphore}
+read -p "Enter database user (default 'semaphore_user'): " DB_USER
+DB_USER=${DB_USER:-semaphore_user}
 echo -e "\e[32mDatabase User: $DB_USER\e[0m"
 
 # Prompt for password (no default, but confirm match)
