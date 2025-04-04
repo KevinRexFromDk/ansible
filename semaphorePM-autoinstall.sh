@@ -42,7 +42,7 @@ echo -e "\e[34mUpdating and upgrading the system...\e[0m"
 sudo apt-get update -y && sudo apt-get upgrade -y || handle_error "System update/upgrade failed."
 
 # Check and install mariadb
-check_or_install_app "mariadb" "mariadb" "sudo apt install mariadb-server"
+check_or_install_app "mariadb" "mariadb" "sudo apt install mariadb-server -y"
 sudo mariadb-secure-installation || handle_error "Failed to execute maridb-secure-installation"
 
 # Prompt for DB name with default
