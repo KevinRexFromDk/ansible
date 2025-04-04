@@ -89,13 +89,12 @@ sudo sudo dpkg -i semaphore_2.12.4_linux_amd64.deb || handle_error "Failed to un
 
 echo -e "\e[34mSetting up semaphore environment...\e[0m"
 semaphore setup
-sudo semaphore server --config $(pwd)/config.json || handle_error "Failed to configure semaphore server"
 sudo mkdir /etc/semaphore || handle_error "Failed to create /etc/semaphore"
 sudo mv config.json /etc/semaphore/config.json || handle_error "Failed to move config.json to /etc/semaphore"
 sudo chown root:root /etc/semapore/config.json || handle_error "Failed to chown on config.json in /etc/semaphore"
 
 echo -e "\e[34mCreating semaphore service...\e[0m"
-wget https://raw.githubusercontent.com/KevinRexFromDk/ansible/refs/heads/main/semaphore.service -O /etc/systemd/system/semaphore.service || handle_error "Unable to retrieve semaphore.service - check your network connection"
+sudo wget https://raw.githubusercontent.com/KevinRexFromDk/ansible/refs/heads/main/semaphore.service -O /etc/systemd/system/semaphore.service || handle_error "Unable to retrieve semaphore.service - check your network connection"
 sudo systemctl start semaphore
 sudo systemctl enable semaphore
 
