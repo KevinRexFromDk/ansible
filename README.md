@@ -1,4 +1,4 @@
-# 🚀 Guacamole Auto Install Script
+# 🚀 Semaphore Auto Install Script
 
 This repository contains an automated installation scripts for setting up **Semaphore UI** with **MariaDB** on an Ubuntu server 24.04.
 
