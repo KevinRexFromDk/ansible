@@ -83,7 +83,7 @@ EOF
 
 echo -e "\e[32mDatabase $DB_NAME and user $DB_USER created successfully.\e[0m"
 
-# Check and install mariadb
+# Check and install semaphore
 check_or_install_app "semaphore setup" "semaphore" "wget https://github.com/semaphoreui/semaphore/releases/download/v2.12.4/semaphore_2.12.4_linux_amd64.deb"
 sudo sudo dpkg -i semaphore_2.12.4_linux_amd64.deb || handle_error "Failed to unpack semaphore_2.12.4_linux_amd64.deb"
 
