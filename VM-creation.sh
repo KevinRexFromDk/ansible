@@ -2,10 +2,10 @@
 
 # === Config ===
 STORAGE="MRK"
-#OVA="Ubuntusrvssh.ova"
-OVA_PATH="/mnt/pve/${STORAGE}/import/Ubuntusrvssh.ova"
+DISK="Ubuntusrvssh"
+OVA_PATH="/mnt/pve/${STORAGE}/import/${DISK}.ova"
 TMP_DIR="/mnt/pve/${STORAGE}/import/ova_temp"
-OVF_FILE="${TMP_DIR}/Ubuntusrvssh.ova"
+OVF_FILE="${TMP_DIR}/${DISK}.ovf"
 
 # === Generate a unique 8-char name ===
 VM_NAME="NewUbuntu-$(tr -dc A-Za-z0-9 </dev/urandom | head -c 8)"
