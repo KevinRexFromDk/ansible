@@ -58,4 +58,4 @@ rm -rf $TMP_DIR
 echo "VM Imported with VMID: $VMID and Name: $VM_NAME"
 
 # === Exit ===
-Exit 1
+#Exit 1
