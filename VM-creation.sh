@@ -43,13 +43,13 @@ CONF_FILE="/etc/pve/qemu-server/$VMID.conf"
 RANDOM_MAC="BC:24:11:$(hexdump -n 3 -e '3/1 "%02X:"' /dev/random | sed 's/.$//')"
 
 # === Modify VMID.conf ===
-echo "sata0: $STORAGE:$VMID/vm-${VMID}-disk-0.qcow2,size=30G" >> $CONF_FILE
+sed -i "s|^sata0:.*|sata0: $STORAGE:$VMID/vm-${VMID}-disk-0.qcow2,size=30G|" $CONF_FILE
 echo "agent: 1" >> $CONF_FILE
 echo "cpu: x86-64-v2-AES" >> $CONF_FILE
 echo "ostype: l26" >> $CONF_FILE
 echo "sockets: 1" >> $CONF_FILE
 echo "net0: e1000=$RANDOM_MAC,bridge=vmbr0" >> $CONF_FILE
-echo "name: $VM_NAME/" >> $CONF_FILE
+sed -i "s/^name:.*/name: $VM_NAME/" $CONF_FILE
 
 # === Cleanup ===
 rm -rf $TMP_DIR
