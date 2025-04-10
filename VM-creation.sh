@@ -30,7 +30,7 @@ get_free_vmid() {
 VMID=$(get_free_vmid)
 
 # === Create temp directory and extract OVA ===
-mkdir -p $TMP_DIR
+mkdir $TMP_DIR
 tar -xvf $OVA_PATH -C $TMP_DIR
 
 # === Import OVF with qcow2 format (no --name flag) ===
