@@ -4,7 +4,7 @@
 STORAGE="MRK"
 DISK="Ubuntusrvssh"
 OVA_PATH="/mnt/pve/${STORAGE}/import/${DISK}.ova"
-TMP_DIR="/mnt/pve/${STORAGE}/import/ova_temp"
+TMP_DIR="/var/tmp/ova_temp"
 OVF_FILE="${TMP_DIR}/${DISK}.ovf"
 
 # === Generate a unique 8-char name ===
