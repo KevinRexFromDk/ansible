@@ -32,7 +32,7 @@ VMID=$(get_free_vmid)
 # === Create temp directory and extract OVA ===
 UNIQUE_OVAID="$TMP_DIR$VMID"
 
-mkdir -P $UNIQUE_OVAID
+mkdir $UNIQUE_OVAID
 tar -xvf $OVA_PATH -C $UNIQUE_OVAID
 
 # === Import OVF with qcow2 format (no --name flag) ===
