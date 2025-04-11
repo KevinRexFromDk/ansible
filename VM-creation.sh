@@ -59,5 +59,8 @@ rm -rf $UNIQUE_OVAID
 # === Output results ===
 echo "VM Imported with VMID: $VMID and Name: $VM_NAME"
 
+# === Remove script ===
+rm /tmp/VM-creation.sh
+
 # === Exit ===
 Exit 1
