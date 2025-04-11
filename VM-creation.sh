@@ -30,10 +30,8 @@ get_free_vmid() {
 VMID=$(get_free_vmid)
 
 # === Create temp directory and extract OVA ===
-UNIQUE_OVAID="$TMP_DIR$VMID"
-
-mkdir $UNIQUE_OVAID
-tar -xvf $OVA_PATH -C $UNIQUE_OVAID
+mkdir $TMP_DIR
+tar -xvf $OVA_PATH -C $TMP_DIR
 
 # === Import OVF with qcow2 format (no --name flag) ===
 qm importovf $VMID $OVF_FILE $STORAGE --format qcow2
@@ -54,13 +52,10 @@ echo "net0: e1000=$RANDOM_MAC,bridge=vmbr0" >> $CONF_FILE
 sed -i "s/^name:.*/name: $VM_NAME/" $CONF_FILE
 
 # === Cleanup ===
-rm -rf $UNIQUE_OVAID
+rm -rf $TMP_DIR
 
 # === Output results ===
 echo "VM Imported with VMID: $VMID and Name: $VM_NAME"
-
-# === Remove script ===
-rm /tmp/VM-creation.sh
 
 # === Exit ===
 exit 0
