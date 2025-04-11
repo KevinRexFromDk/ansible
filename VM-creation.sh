@@ -63,4 +63,4 @@ echo "VM Imported with VMID: $VMID and Name: $VM_NAME"
 rm /tmp/VM-creation.sh
 
 # === Exit ===
-Exit 1
+exit 1
