@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# Function to handle errors
 handle_error() {
-    echo -e "\e[31mError: $1\e[0m"  # Print error in red
-    exit 1  # Exit the script with an error status
+    echo -e "\e[31mError: $1\e[0m"
+    exit 1
 }
-
-# Function to check if an app is installed, and if not, install it
 check_or_install_app() {
     local cmd=$1
     local app=$2
@@ -36,26 +33,20 @@ check_or_install_app() {
         done
     fi
 }
-
-# Update and upgrade the system
 echo -e "\e[34mUpdating and upgrading the system...\e[0m"
 sudo apt-get update -y && sudo apt-get upgrade -y || handle_error "System update/upgrade failed."
 
-# Check and install mariadb
 check_or_install_app "mariadb" "mariadb" "sudo apt install mariadb-server -y"
 sudo mariadb-secure-installation || handle_error "Failed to execute maridb-secure-installation"
 
-# Prompt for DB name with default
 read -p "Enter database name (default 'semaphore_db'): " DB_NAME
 DB_NAME=${DB_NAME:-semaphore_db}
 echo -e "\e[32mDatabase Name: $DB_NAME\e[0m"
 
-# Prompt for DB user with default
 read -p "Enter database user (default 'semaphore_user'): " DB_USER
 DB_USER=${DB_USER:-semaphore_user}
 echo -e "\e[32mDatabase User: $DB_USER\e[0m"
 
-# Prompt for password (no default, but confirm match)
 while true; do
     read -s -p "Enter password for user '$DB_USER': " DB_PASS
     echo
@@ -71,10 +62,8 @@ while true; do
 done
 echo -e "\e[32mPassword confirmed.\e[0m"
 
-# Confirm before proceeding
 echo -e "\e[34mCreating MariaDB database and user...\e[0m"
 
-# Run the SQL using heredoc
 sudo mariadb <<EOF
 CREATE DATABASE $DB_NAME;
 GRANT ALL PRIVILEGES ON $DB_NAME.* TO $DB_USER@localhost IDENTIFIED BY '$DB_PASS';
@@ -83,7 +72,6 @@ EOF
 
 echo -e "\e[32mDatabase $DB_NAME and user $DB_USER created successfully.\e[0m"
 
-# Check and install semaphore
 check_or_install_app "semaphore setup" "semaphore" "wget https://github.com/semaphoreui/semaphore/releases/download/v2.12.4/semaphore_2.12.4_linux_amd64.deb"
 sudo sudo dpkg -i semaphore_2.12.4_linux_amd64.deb || handle_error "Failed to unpack semaphore_2.12.4_linux_amd64.deb"
 
