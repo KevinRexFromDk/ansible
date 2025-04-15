@@ -2,7 +2,7 @@
 
 # === Config ===
 STORAGE="MRK"
-DISK="win11"
+DISK="Ubuntusrvssh"
 OVA_PATH="/mnt/pve/${STORAGE}/import/${DISK}.ova"
 TMP_DIR="/var/tmp/ova_temp"
 OVF_FILE="${TMP_DIR}/${DISK}.ovf"
