@@ -85,4 +85,7 @@ sudo wget https://raw.githubusercontent.com/KevinRexFromDk/ansible/refs/heads/ma
 sudo systemctl start semaphore
 sudo systemctl enable semaphore
 
+sudo apt install sshpass -y
+sudo apt install ansible -y
+
 sudo rm -f $(pwd)/semaphore_2.12.4_linux_amd64.deb
